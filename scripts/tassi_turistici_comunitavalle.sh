@@ -8,7 +8,7 @@ CREATE VIRTUAL TABLE "tasso_turistico_comunita_valle" USING VirtualText('tasso_t
 'UTF-8', 1, POINT, NONE, ';');
 create table "tasso_turistico_comunita_valle_2013" as SELECT DISTINCT("b"."COMUNITA") AS "id", lower("b"."DESC_") AS "comunita", lower("b"."SEDE") AS "sede","a"."valore" AS "valore","b"."Geometry" AS "geometry" 
 FROM "tasso_turistico_comunita_valle" AS "a"
-JOIN "ammcva" AS "b" ON ("a"."codEnte"-1000 = "b"."COMUNITA") GROUP BY ID;
+JOIN "ammcva" AS "b" ON ("a"."codEnte"-1000 = "b"."COMUNITA") WHERE "a"."anno"=2013;
 SELECT RecoverGeometryColumn('tasso_turistico_comunita_valle_2013','geometry',25832,'POLYGON','XY');
 .dumpshp tasso_turistico_comunita_valle_2013 geometry "tasso_turistico_comunita_valle_2013" "utf-8"
 .dumpgeojson tasso_turistico_comunita_valle_2013 geometry "tasso_turistico_comunita_valle_2013.geojson"
