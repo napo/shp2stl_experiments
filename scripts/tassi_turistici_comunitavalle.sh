@@ -11,9 +11,9 @@ FROM "tasso_turistico_comunita_valle" AS "a"
 JOIN "ammcva" AS "b" ON ("a"."codEnte"-1000 = "b"."COMUNITA") WHERE "a"."anno"=2013;
 SELECT RecoverGeometryColumn('tasso_turistico_comunita_valle_2013','geometry',25832,'POLYGON','XY');
 .dumpshp tasso_turistico_comunita_valle_2013 geometry "tasso_turistico_comunita_valle_2013" "utf-8"
-.dumpgeojson tasso_turistico_comunita_valle_2013 geometry "tasso_turistico_comunita_valle_2013.geojson"
 EOF
 spatialite ammcva.sqlite < cmd.sql
+ogr2ogr -f "geojson" tasso_turistico_comunita_valle_2013.geojson tasso_turistico_comunita_valle_2013.shp
 spatialite -csv ammcva.sqlite "select id, comunita, sede,valore from tasso_turistico_comunita_valle_2013" > tasso_turistico_comunita_valle_2013.csv
 rm *.zip
 rm ammcva*

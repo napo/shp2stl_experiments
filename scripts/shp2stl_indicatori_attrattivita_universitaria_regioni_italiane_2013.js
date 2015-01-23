@@ -6,10 +6,10 @@ var file = 'attrattivita_universitaria_regioni_italiane_2013';
 shp2stl.shp2stl(file, 
     {
         width: 100, //in STL arbitrary units, but typically 3D printers use mm
-        height: 5,
+        height: 10,
         extraBaseHeight: 0,
         extrudeBy: "valore",
-        simplification: 0.5,
+        simplification: 0.8,
 
         binary: true,
         cutoutHoles: false,
