@@ -22,5 +22,5 @@ spatialite -csv attrattivita_universitaria_regioni_italiane.sqlite "select cod_r
 rm *.zip
 rm reg2011*
 rm *.sql
-rm Indicatori_regionali_20140922.csv
+#rm Indicatori_regionali_20140922.csv
 
