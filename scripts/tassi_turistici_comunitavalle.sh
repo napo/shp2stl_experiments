@@ -13,7 +13,7 @@ SELECT RecoverGeometryColumn('tasso_turistico_comunita_valle_2013','geometry',25
 .dumpshp tasso_turistico_comunita_valle_2013 geometry "tasso_turistico_comunita_valle_2013" "utf-8"
 EOF
 spatialite ammcva.sqlite < cmd.sql
-#ogr2ogr -f "geojson" -t_srs epsg:4326 tasso_turistico_comunita_valle_2013.geojson tasso_turistico_comunita_valle_2013.shp
+ogr2ogr -f "geojson" -t_srs epsg:4326 tasso_turistico_comunita_valle_2013.geojson tasso_turistico_comunita_valle_2013.shp
 spatialite -header -csv ammcva.sqlite "select id, comunita, sede,valore from tasso_turistico_comunita_valle_2013" > tasso_turistico_comunita_valle_2013.csv
 #rm *.zip
 #rm ammcva*
