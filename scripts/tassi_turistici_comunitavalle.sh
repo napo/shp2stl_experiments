@@ -15,7 +15,9 @@ EOF
 spatialite ammcva.sqlite < cmd.sql
 ogr2ogr -f "geojson" -t_srs epsg:4326 tasso_turistico_comunita_valle_2013.geojson tasso_turistico_comunita_valle_2013.shp
 spatialite -header -csv ammcva.sqlite "select id, comunita, sede,valore from tasso_turistico_comunita_valle_2013" > tasso_turistico_comunita_valle_2013.csv
-#rm *.zip
-#rm ammcva*
-#rm *.sql
-#rm tasso_turistico_comunita_valle.csv
+mkdir -p ../3dmaps/tasso_turistico_2013_comunita_valle_trentino
+rm *.zip
+rm ammcva*
+rm *.sql
+nodejs shp2stl_tasso_turistico_comunita_valle_2013.js
+mv tasso_turistico_comunita_valle_2013* ../3dmaps/tasso_turistico_2013_comunita_valle_trentino
