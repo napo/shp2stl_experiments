@@ -14,10 +14,7 @@ var fileRoot 	= "tasso_turistico_comunita_valle_2013",
 	colorScheme = "Oranges"
 
 var sourceProjection = fileRoot + ".prj";
-
-
 var obj = JSON.parse(fs.readFileSync(fileRoot + ".geojson", 'utf8'));
-console.log(brewer[colorScheme][numBreaks])
 geojson = geocolor.jenks(obj, attribute, numBreaks, brewer[colorScheme][numBreaks], {'stroke-width':.3})
 fs.writeFileSync(fileRoot + ".geojson",  JSON.stringify(geojson));
 var topology = topojson.topology(geojson.features, {"property-transform": function(feature) { return feature.properties; }});
